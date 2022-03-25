@@ -51,7 +51,9 @@ fun AddTodoDialog(){
 @Composable
 fun Title(text: String, size: Int){
     Text(text = text,
-    modifier = Modifier.fillMaxWidth(),
+    modifier = Modifier
+        .fillMaxWidth()
+        .padding(6.dp),
         style = TextStyle(
             fontSize = size.sp,
             fontWeight = FontWeight.Bold
