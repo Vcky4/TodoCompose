@@ -5,7 +5,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -14,7 +17,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 import com.todo.todocompose.ui.database.AppViewModel
+import com.todo.todocompose.ui.database.TodoData
 import com.todo.todocompose.ui.theme.TodoComposeTheme
+import android.app.AlertDialog as AlertDialog1
 
 class MainActivity : ComponentActivity() {
     private lateinit var viewModel: AppViewModel
@@ -35,11 +40,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainUi() {
-    Text(text = "Hello")
+    HomeScreen()
 }
 
 @Composable
-fun AddTodoDialog(){
+fun AddTodoDialog() {
     AlertDialog(onDismissRequest = { /*TODO*/ },
     title = {Title(text = "Add Todo", size = 20)},
     buttons = { Button(onClick = { /*TODO*/ }){} }
@@ -56,6 +61,24 @@ fun Title(text: String, size: Int){
         )
     )
 }
+
+@Composable
+fun HomeScreen() {
+
+    Scaffold(floatingActionButton = {
+        FloatingActionButton(onClick = { /*TODO*/ }) {
+            Icon(imageVector = Icons.Default.Add, contentDescription = null)
+        }
+    }) {
+        LazyColumn {
+
+            /*TODO*/
+
+        }
+    }
+}
+
+
 
 /*
 @Preview(showBackground = true)
