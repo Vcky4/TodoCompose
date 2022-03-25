@@ -24,11 +24,8 @@ fun FullScreen(){
 
 @Composable
 fun todoItem(
-    title:String
-             ,todo: TodoData,
-             onChecked: (Boolean) -> Unit,) {
-    val viewModel = View(AppViewModel::class.java)
-    val state by viewModel.state.collectAsState()
+    title:String) {
+
     Card(
         modifier = Modifier
     ) {
@@ -39,9 +36,14 @@ fun todoItem(
         ) {
             Title(text = title, size = 16)
             val isChecked = remember { mutableStateOf(false) }
+
             Checkbox(
-                checked = todo.isComplete, onCheckedChange = { onChecked(it) },
-            )
+                checked = isChecked.value,
+                onCheckedChange = {
+                    isChecked.value = it
+                }
+
+                )
         }
     }
 }

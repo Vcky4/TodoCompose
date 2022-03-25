@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.todo.todocompose.ui.database.AppViewModel
 import com.todo.todocompose.ui.database.TodoData
 import com.todo.todocompose.ui.theme.TodoComposeTheme
+import com.todo.todocompose.ui.todoItem
 import android.app.AlertDialog as AlertDialog1
 
 class MainActivity : ComponentActivity() {
@@ -71,18 +72,18 @@ fun Title(text: String, size: Int){
 
 @Composable
 fun HomeScreen() {
-    val viewModel = viewModel(AppViewModel::class.java)
-    val state by viewModel.state.collectAsState()
+    val state =true
     Scaffold(floatingActionButton = {
         FloatingActionButton(onClick = { /*TODO*/ }) {
             Icon(imageVector = Icons.Default.Add, contentDescription = null)
         }
     }) {
         LazyColumn {
-           item
+
+           }
         }
     }
-}
+
 
 
 
