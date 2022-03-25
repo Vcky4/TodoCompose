@@ -10,34 +10,36 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
+import com.todo.todocompose.ui.database.AppViewModel
 import com.todo.todocompose.ui.theme.TodoComposeTheme
 
 class MainActivity : ComponentActivity() {
+    private lateinit var viewModel: AppViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[AppViewModel::class.java]
         setContent {
             TodoComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+                ) { MainUi() }
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun MainUi() {
+    Text(text = "Hello")
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     TodoComposeTheme {
-        Greeting("Android")
+        MainUi()
     }
 }
