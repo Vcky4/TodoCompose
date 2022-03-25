@@ -71,16 +71,15 @@ fun Title(text: String, size: Int){
 
 @Composable
 fun HomeScreen() {
-
+    val viewModel = viewModel(AppViewModel::class.java)
+    val state by viewModel.state.collectAsState()
     Scaffold(floatingActionButton = {
         FloatingActionButton(onClick = { /*TODO*/ }) {
             Icon(imageVector = Icons.Default.Add, contentDescription = null)
         }
     }) {
         LazyColumn {
-
-            /*TODO*/
-
+           item
         }
     }
 }

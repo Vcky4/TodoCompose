@@ -12,6 +12,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.todo.todocompose.Title
+import com.todo.todocompose.ui.database.AppViewModel
+import com.todo.todocompose.ui.database.TodoData
 
 @Composable
 fun FullScreen(){
@@ -21,22 +23,29 @@ fun FullScreen(){
 }
 
 @Composable
-fun todoItem(title:String,){
-    Card(modifier = Modifier
-       ) {
-        Row( horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth() .padding(8.dp)) {
+fun todoItem(
+    title:String
+             ,todo: TodoData,
+             onChecked: (Boolean) -> Unit,) {
+    val viewModel = View(AppViewModel::class.java)
+    val state by viewModel.state.collectAsState()
+    Card(
+        modifier = Modifier
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth().padding(8.dp)
+        ) {
             Title(text = title, size = 16)
             val isChecked = remember { mutableStateOf(false) }
             Checkbox(
-                checked = isChecked.value,
-                onCheckedChange = {
-                    isChecked.value = it
-                },
-
+                checked = todo.isComplete, onCheckedChange = { onChecked(it) },
             )
         }
     }
 }
+
 
 @Preview
 @Composable
